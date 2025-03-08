@@ -33,7 +33,7 @@ const LIST = [
     {
         id:7,
         nome:'Chewbacca',
-        avatar:'images/chewbacca'
+        avatar:'images/chewbacca.png'
     },
     {
         id: 8,
@@ -53,15 +53,30 @@ const App = new Vue({
         like(userName) {
             alert(`o personagem ${userName} recebeu um like`)
         },
-        search() {
+        remover(id){
             const list = this.characters
+
+            const result = list.filter(item =>{
+                return item.id !== id
+            })
+
+            this.characters = result
+        },
+        search() {
+            
+            if(this.searchName === ''){
+                return alert('O campo de busca é obrigatório');
+            }
+            const list = this.characters = LIST
             const result = list.filter(item => {
                 return item.nome === this.searchName
             })
-            if(result.lenght <= 0){
-                alert()
+
+            if(result.length <= 0){
+                alert('Nenhum registro encontrado')
+            }else{
+                this.characters = result
             }
-            this.characters = result
         }
     }
 })

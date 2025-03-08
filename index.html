@@ -3,19 +3,18 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>{{ title }}</title>
+    <title> {{title}}</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='styles.css'>
-    <script src='main.js'></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/styles.css'>
 </head>
 <body>
     <div id="app">
         <h1> Personagens do Star Wars Lego</h1>
-        <small>Olá, {{ userName }}</small>
+        <small>Olá, {{userName}}</small>
 
         <form>
             <input placeholder="Busca por nome..." v-model="searchName"/>
-            <buttonb type="button" @click="search()">Buscar</buttonb>
+            <button type="button" @click="search()">Buscar</button>
         </form>
 
         <div class="characters">
@@ -23,6 +22,7 @@
                 <img :src="item.avatar" :alt="item.nome"/>
                 <p>{{item.nome}}</p>
                 <button @click="like(item.nome)">Like</button>
+                <button @click="remover(item.id)">Remover</button>
             </div>
         </div>
     </div>
